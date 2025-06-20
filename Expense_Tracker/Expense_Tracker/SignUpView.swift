@@ -1,6 +1,10 @@
+
 import SwiftUI
 
 struct SignUpView: View {
+    // Add new state variables for first and last name
+    @State private var firstName = ""
+    @State private var lastName = ""
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
@@ -14,41 +18,62 @@ struct SignUpView: View {
             Text("Sign Up")
                 .font(.largeTitle)
                 .bold()
-
-            TextField("Username", text: $username)
-                .autocapitalization(.none)
-                .textContentType(.username)
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-
-            TextField("Email", text: $email)
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-                .textContentType(.emailAddress)
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-
-            SecureField("Password", text: $password)
-                .textContentType(.newPassword)
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-
-            SecureField("Confirm Password", text: $confirmPassword)
-                .textContentType(.newPassword)
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-
+            
+            // Group the name fields together
+            Group {
+                TextField("First Name", text: $firstName)
+                    .autocapitalization(.words)
+                    .textContentType(.givenName)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+                
+                TextField("Last Name", text: $lastName)
+                    .autocapitalization(.words)
+                    .textContentType(.familyName)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+                
+                TextField("Username", text: $username)
+                    .autocapitalization(.none)
+                    .textContentType(.username)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+                
+                TextField("Email", text: $email)
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
+                    .textContentType(.emailAddress)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+            }
+            
+            // Group the password fields together
+            Group {
+                SecureField("Password", text: $password)
+                    .textContentType(.newPassword)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+                
+                SecureField("Confirm Password", text: $confirmPassword)
+                    .textContentType(.newPassword)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+            }
+            
             if isLoading {
                 ProgressView()
             }
-
+            
             Button("Create Account") {
                 errorMessage = nil
-                guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
+                // Validate all the fields
+                guard !firstName.isEmpty, !lastName.isEmpty, !username.isEmpty, !email.isEmpty, !password.isEmpty, !confirmPassword.isEmpty else {
                     errorMessage = "All fields are required"
                     return
                 }
@@ -57,7 +82,14 @@ struct SignUpView: View {
                     return
                 }
                 isLoading = true
-                AuthAPI.shared.signUp(username: username, email: email, password: password) { result in
+                AuthAPI.shared.signUp(
+                    username: username,
+                    email: email,
+                    password: password,
+                    password_confirm: confirmPassword,
+                    first_name: firstName,
+                    last_name: lastName
+                ) { result in
                     DispatchQueue.main.async {
                         isLoading = false
                         switch result {
@@ -73,12 +105,12 @@ struct SignUpView: View {
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(8)
-
+            
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
-
+            
             Spacer()
         }
         .padding()

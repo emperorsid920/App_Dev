@@ -1,6 +1,6 @@
 //
 //  FirebaseManager.swift
-//  
+//  Expense_Track
 //
 //  Created by Sid Kumar on 6/29/25.
 //
@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+@MainActor
 class FirebaseManager: ObservableObject {
     static let shared = FirebaseManager()
     
@@ -20,7 +21,7 @@ class FirebaseManager: ObservableObject {
     private let auth = Auth.auth()
     private let firestore = Firestore.firestore()
     
-    init() {
+    private init() {
         // Check if user is already logged in
         if let user = auth.currentUser {
             self.currentUser = user
@@ -29,7 +30,7 @@ class FirebaseManager: ObservableObject {
         
         // Listen for auth state changes
         auth.addStateDidChangeListener { [weak self] _, user in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self?.currentUser = user
                 self?.isAuthenticated = user != nil
             }
@@ -66,4 +67,3 @@ class FirebaseManager: ObservableObject {
         }
     }
 }
-

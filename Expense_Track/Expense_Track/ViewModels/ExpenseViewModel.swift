@@ -54,12 +54,12 @@ class ExpenseViewModel: ObservableObject {
         isLoading = true
         
         let expense = Expense(
-            amount: amountValue,
-            category: selectedCategory,
-            note: note,
-            date: selectedDate,
-            userId: userId
-        )
+                    amount: amountValue,
+                    category: selectedCategory,
+                    note: note,
+                    date: selectedDate,
+                    userId: userId
+                )
         
         do {
             try await firebaseManager.addExpense(expense)

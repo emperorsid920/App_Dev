@@ -1,5 +1,5 @@
 //
-//  FirebaseManager.swift
+//  FirebaseManager.swift (Updated)
 //  Expense_Track
 //
 //  Created by Sid Kumar on 6/29/25.
@@ -65,5 +65,32 @@ class FirebaseManager: ObservableObject {
         return try snapshot.documents.compactMap { document in
             try document.data(as: Expense.self)
         }
+    }
+    
+    // MARK: - User Profile Operations
+    func createUserProfile(_ profile: UserProfile) async throws {
+        try firestore.collection("userProfiles").document().setData(from: profile)
+    }
+    
+    func fetchUserProfile(for userId: String) async throws -> UserProfile? {
+        let snapshot = try await firestore
+            .collection("userProfiles")
+            .whereField("userId", isEqualTo: userId)
+            .limit(to: 1)
+            .getDocuments()
+        
+        guard let document = snapshot.documents.first else {
+            return nil
+        }
+        
+        return try document.data(as: UserProfile.self)
+    }
+    
+    func updateUserProfile(_ profile: UserProfile) async throws {
+        guard let profileId = profile.id else {
+            throw NSError(domain: "ProfileError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Profile ID is missing"])
+        }
+        
+        try firestore.collection("userProfiles").document(profileId).setData(from: profile)
     }
 }

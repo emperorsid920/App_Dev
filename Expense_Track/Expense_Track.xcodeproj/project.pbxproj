@@ -14,15 +14,25 @@
 		CB3DBAFC2E11CEEE000FDC99 /* Expense_TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBAFB2E11CEEE000FDC99 /* Expense_TrackTests.swift */; };
 		CB3DBB062E11CEEE000FDC99 /* Expense_TrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB052E11CEEE000FDC99 /* Expense_TrackUITests.swift */; };
 		CB3DBB082E11CEEE000FDC99 /* Expense_TrackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB072E11CEEE000FDC99 /* Expense_TrackUITestsLaunchTests.swift */; };
-		CB3DBB182E11D572000FDC99 /* Models in Resources */ = {isa = PBXBuildFile; fileRef = CB3DBB142E11D571000FDC99 /* Models */; };
-		CB3DBB192E11D572000FDC99 /* ViewModels in Resources */ = {isa = PBXBuildFile; fileRef = CB3DBB152E11D571000FDC99 /* ViewModels */; };
-		CB3DBB1A2E11D572000FDC99 /* Services in Resources */ = {isa = PBXBuildFile; fileRef = CB3DBB162E11D571000FDC99 /* Services */; };
-		CB3DBB1B2E11D572000FDC99 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = CB3DBB172E11D571000FDC99 /* Views */; };
 		CB3DBB1D2E11D881000FDC99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB3DBB1C2E11D881000FDC99 /* GoogleService-Info.plist */; };
 		CB3DBB202E11DC52000FDC99 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = CB3DBB1F2E11DC52000FDC99 /* FirebaseAppCheck */; };
 		CB3DBB222E11DC52000FDC99 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB3DBB212E11DC52000FDC99 /* FirebaseAuth */; };
 		CB3DBB242E11DC52000FDC99 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB3DBB232E11DC52000FDC99 /* FirebaseFirestore */; };
 		CB3DBB262E11DC52000FDC99 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB3DBB252E11DC52000FDC99 /* FirebaseFirestoreSwift */; };
+		CB3DBB3F2E1245AB000FDC99 /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB3D2E1245AB000FDC99 /* ExpenseCategory.swift */; };
+		CB3DBB402E1245AB000FDC99 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB3E2E1245AB000FDC99 /* Expense.swift */; };
+		CB3DBB422E1245CC000FDC99 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB412E1245CC000FDC99 /* FirebaseManager.swift */; };
+		CB3DBB452E1245EC000FDC99 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB432E1245EB000FDC99 /* AuthViewModel.swift */; };
+		CB3DBB462E1245EC000FDC99 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB442E1245EB000FDC99 /* ExpenseViewModel.swift */; };
+		CB3DBB4B2E12460C000FDC99 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB472E12460B000FDC99 /* AddExpenseView.swift */; };
+		CB3DBB4C2E12460C000FDC99 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB482E12460B000FDC99 /* LoginView.swift */; };
+		CB3DBB4D2E12460C000FDC99 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB492E12460B000FDC99 /* SignupView.swift */; };
+		CB3DBB4E2E12460C000FDC99 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB4A2E12460B000FDC99 /* DashboardView.swift */; };
+		CB3DBB502E125116000FDC99 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB4F2E125116000FDC99 /* UserProfile.swift */; };
+		CB3DBB5A2E1257C0000FDC99 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB592E1257C0000FDC99 /* ProfileViewModel.swift */; };
+		CB3DBB5E2E1257E4000FDC99 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB5B2E1257E4000FDC99 /* ProfileView.swift */; };
+		CB3DBB5F2E1257E4000FDC99 /* BudgetReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB5C2E1257E4000FDC99 /* BudgetReportView.swift */; };
+		CB3DBB602E1257E4000FDC99 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DBB5D2E1257E4000FDC99 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +63,21 @@
 		CB3DBB012E11CEEE000FDC99 /* Expense_TrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Expense_TrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3DBB052E11CEEE000FDC99 /* Expense_TrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackUITests.swift; sourceTree = "<group>"; };
 		CB3DBB072E11CEEE000FDC99 /* Expense_TrackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CB3DBB142E11D571000FDC99 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
-		CB3DBB152E11D571000FDC99 /* ViewModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewModels; sourceTree = "<group>"; };
-		CB3DBB162E11D571000FDC99 /* Services */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Services; sourceTree = "<group>"; };
-		CB3DBB172E11D571000FDC99 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
 		CB3DBB1C2E11D881000FDC99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB3DBB3D2E1245AB000FDC99 /* ExpenseCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseCategory.swift; path = Models/ExpenseCategory.swift; sourceTree = "<group>"; };
+		CB3DBB3E2E1245AB000FDC99 /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expense.swift; path = Models/Expense.swift; sourceTree = "<group>"; };
+		CB3DBB412E1245CC000FDC99 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseManager.swift; path = Services/FirebaseManager.swift; sourceTree = "<group>"; };
+		CB3DBB432E1245EB000FDC99 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
+		CB3DBB442E1245EB000FDC99 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseViewModel.swift; path = ViewModels/ExpenseViewModel.swift; sourceTree = "<group>"; };
+		CB3DBB472E12460B000FDC99 /* AddExpenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddExpenseView.swift; path = Views/AddExpenseView.swift; sourceTree = "<group>"; };
+		CB3DBB482E12460B000FDC99 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = Views/LoginView.swift; sourceTree = "<group>"; };
+		CB3DBB492E12460B000FDC99 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupView.swift; path = Views/SignupView.swift; sourceTree = "<group>"; };
+		CB3DBB4A2E12460B000FDC99 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = Views/DashboardView.swift; sourceTree = "<group>"; };
+		CB3DBB4F2E125116000FDC99 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		CB3DBB592E1257C0000FDC99 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = Models/ProfileViewModel.swift; sourceTree = "<group>"; };
+		CB3DBB5B2E1257E4000FDC99 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = Views/ProfileView.swift; sourceTree = "<group>"; };
+		CB3DBB5C2E1257E4000FDC99 /* BudgetReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BudgetReportView.swift; path = Views/BudgetReportView.swift; sourceTree = "<group>"; };
+		CB3DBB5D2E1257E4000FDC99 /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = Views/MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +132,20 @@
 		CB3DBAE92E11CEE9000FDC99 /* Expense_Track */ = {
 			isa = PBXGroup;
 			children = (
-				CB3DBB142E11D571000FDC99 /* Models */,
-				CB3DBB162E11D571000FDC99 /* Services */,
-				CB3DBB152E11D571000FDC99 /* ViewModels */,
-				CB3DBB172E11D571000FDC99 /* Views */,
+				CB3DBB5C2E1257E4000FDC99 /* BudgetReportView.swift */,
+				CB3DBB5D2E1257E4000FDC99 /* MainTabView.swift */,
+				CB3DBB5B2E1257E4000FDC99 /* ProfileView.swift */,
+				CB3DBB592E1257C0000FDC99 /* ProfileViewModel.swift */,
+				CB3DBB4F2E125116000FDC99 /* UserProfile.swift */,
+				CB3DBB472E12460B000FDC99 /* AddExpenseView.swift */,
+				CB3DBB4A2E12460B000FDC99 /* DashboardView.swift */,
+				CB3DBB482E12460B000FDC99 /* LoginView.swift */,
+				CB3DBB492E12460B000FDC99 /* SignupView.swift */,
+				CB3DBB432E1245EB000FDC99 /* AuthViewModel.swift */,
+				CB3DBB442E1245EB000FDC99 /* ExpenseViewModel.swift */,
+				CB3DBB412E1245CC000FDC99 /* FirebaseManager.swift */,
+				CB3DBB3E2E1245AB000FDC99 /* Expense.swift */,
+				CB3DBB3D2E1245AB000FDC99 /* ExpenseCategory.swift */,
 				CB3DBAEA2E11CEE9000FDC99 /* Expense_TrackApp.swift */,
 				CB3DBB1C2E11D881000FDC99 /* GoogleService-Info.plist */,
 				CB3DBAEC2E11CEE9000FDC99 /* ContentView.swift */,
@@ -263,10 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3DBB1A2E11D572000FDC99 /* Services in Resources */,
-				CB3DBB182E11D572000FDC99 /* Models in Resources */,
-				CB3DBB192E11D572000FDC99 /* ViewModels in Resources */,
-				CB3DBB1B2E11D572000FDC99 /* Views in Resources */,
 				CB3DBAF22E11CEED000FDC99 /* Preview Assets.xcassets in Resources */,
 				CB3DBAEF2E11CEED000FDC99 /* Assets.xcassets in Resources */,
 				CB3DBB1D2E11D881000FDC99 /* GoogleService-Info.plist in Resources */,
@@ -294,8 +320,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3DBB402E1245AB000FDC99 /* Expense.swift in Sources */,
 				CB3DBAED2E11CEE9000FDC99 /* ContentView.swift in Sources */,
+				CB3DBB452E1245EC000FDC99 /* AuthViewModel.swift in Sources */,
+				CB3DBB602E1257E4000FDC99 /* MainTabView.swift in Sources */,
+				CB3DBB4C2E12460C000FDC99 /* LoginView.swift in Sources */,
+				CB3DBB4D2E12460C000FDC99 /* SignupView.swift in Sources */,
+				CB3DBB4B2E12460C000FDC99 /* AddExpenseView.swift in Sources */,
+				CB3DBB4E2E12460C000FDC99 /* DashboardView.swift in Sources */,
+				CB3DBB5F2E1257E4000FDC99 /* BudgetReportView.swift in Sources */,
+				CB3DBB462E1245EC000FDC99 /* ExpenseViewModel.swift in Sources */,
+				CB3DBB502E125116000FDC99 /* UserProfile.swift in Sources */,
+				CB3DBB422E1245CC000FDC99 /* FirebaseManager.swift in Sources */,
+				CB3DBB5A2E1257C0000FDC99 /* ProfileViewModel.swift in Sources */,
 				CB3DBAEB2E11CEE9000FDC99 /* Expense_TrackApp.swift in Sources */,
+				CB3DBB5E2E1257E4000FDC99 /* ProfileView.swift in Sources */,
+				CB3DBB3F2E1245AB000FDC99 /* ExpenseCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

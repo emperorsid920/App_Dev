@@ -1,4 +1,4 @@
-//
+/
 //  Expense.swift
 //  Expense_Track
 //
@@ -16,9 +16,9 @@ struct Expense: Identifiable, Codable {
     var date: Date
     var userId: String
     
-    init(amount: Double, category: String, note: String = "", date: Date(), userId: String) {
+    init(amount: Double, category: String, note: String = "", date: Date = Date(), userId: String) {
         self.amount = amount
-        self.category =  category
+        self.category = category
         self.note = note
         self.date = date
         self.userId = userId

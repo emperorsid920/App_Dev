@@ -190,17 +190,29 @@ struct ExpenseByCategoryChart: View {
                     .foregroundColor(.secondary)
                     .padding()
             } else {
+                // Using BarMark instead of SectorMark for better compatibility
                 Chart(chartData) { data in
-                    SectorMark(
-                        angle: .value("Amount", data.amount),
-                        innerRadius: .ratio(0.5),
-                        angularInset: 2
+                    BarMark(
+                        x: .value("Amount", data.amount),
+                        y: .value("Category", data.category)
                     )
                     .foregroundStyle(by: .value("Category", data.category))
                     .cornerRadius(4)
                 }
                 .frame(height: 200)
                 .chartLegend(position: .bottom, alignment: .center)
+                .chartXAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                        AxisValueLabel(format: .currency(code: "USD"))
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks { _ in
+                        AxisGridLine()
+                        AxisValueLabel()
+                    }
+                }
             }
         }
         .padding()
@@ -317,6 +329,72 @@ struct CategoryBreakdownList: View {
         .padding()
         .background(Color(.systemGray6))
         .cornerRadius(12)
+    }
+}
+
+// Alternative Pie Chart View (if you want to keep pie chart functionality)
+struct AlternativePieChart: View {
+    let chartData: [CategoryData]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Expenses by Category")
+                .font(.headline)
+            
+            if chartData.isEmpty {
+                Text("No expenses for selected period")
+                    .foregroundColor(.secondary)
+                    .padding()
+            } else {
+                VStack(spacing: 12) {
+                    // Simple visual representation using bars
+                    let total = chartData.reduce(0) { $0 + $1.amount }
+                    
+                    ForEach(chartData.prefix(5)) { data in
+                        let percentage = total > 0 ? data.amount / total : 0
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(data.category)
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                Spacer()
+                                Text("$\(data.amount, specifier: "%.2f")")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                            }
+                            
+                            GeometryReader { geometry in
+                                HStack(spacing: 0) {
+                                    Rectangle()
+                                        .fill(colorForIndex(chartData.firstIndex(where: { $0.id == data.id }) ?? 0))
+                                        .frame(width: geometry.size.width * percentage)
+                                    
+                                    Rectangle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: geometry.size.width * (1 - percentage))
+                                }
+                            }
+                            .frame(height: 8)
+                            .cornerRadius(4)
+                            
+                            Text("\(percentage * 100, specifier: "%.1f")% of total")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(.vertical, 2)
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+    
+    private func colorForIndex(_ index: Int) -> Color {
+        let colors: [Color] = [.blue, .green, .orange, .red, .purple, .pink]
+        return colors[index % colors.count]
     }
 }
 

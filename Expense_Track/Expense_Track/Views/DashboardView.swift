@@ -258,6 +258,9 @@ struct ExpenseListView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(
+            expenseViewModel: ExpenseViewModel(),
+            profileViewModel: ProfileViewModel()
+        )
     }
 }
